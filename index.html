@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #111111;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  overflow: hidden;
+}
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 42px 70px 28px;
+  background:
+    linear-gradient(90deg, rgba(244,194,13,0.05), transparent 35%),
+    #111111;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.brand {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #d6d6d6;
+}
+
+.brand span {
+  color: #f4c20d;
+}
+
+.title {
+  font-size: 54px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+.updated {
+  text-align: right;
+  color: #bdbdbd;
+  font-size: 18px;
+  margin-top: 7px;
+}
+
+.yellow-line {
+  height: 5px;
+  background: #f4c20d;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.table {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 230px 120px 90px;
+  align-items: center;
+  min-height: 64px;
+  padding: 0 18px;
+  border-bottom: 1px solid #333;
+}
+
+.row:nth-child(odd) {
+  background: rgba(255,255,255,0.025);
+}
+
+.name {
+  font-size: 28px;
+  font-weight: 650;
+}
+
+.price {
+  font-size: 35px;
+  font-weight: 900;
+  color: #f4c20d;
+  text-align: right;
+}
+
+.unit {
+  font-size: 21px;
+  color: #d0d0d0;
+  text-align: center;
+}
+
+.trend {
+  font-size: 37px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.up { color: #36d36a; }
+.down { color: #ff4b4b; }
+
+.footer {
+  border-top: 2px solid #f4c20d;
+  padding-top: 15px;
+  margin-top: 18px;
+  font-size: 18px;
+  color: #d7d7d7;
+  text-align: center;
+}
+
+.page-number {
+  color: #f4c20d;
+  font-weight: 800;
+}
+</style>
+</head>
+
+<body>
+
+<div class="screen">
+
+  <div class="header">
+    <div class="brand">
+      <span>KERVOELEN</span> SAS
+    </div>
+
+    <div>
+      <div class="title">
+        TARIFS DU JOUR <span class="page-number">1/2</span>
+      </div>
+      <div class="updated" id="updated">Mise à jour...</div>
+    </div>
+  </div>
+
+  <div class="yellow-line"></div>
+
+  <div class="table" id="table"></div>
+
+  <div class="footer">
+    Paiement par virement instantané ou par chèque
+    &nbsp;•&nbsp;
+    Prix mis à jour quotidiennement
+    &nbsp;•&nbsp;
+    Pose de bennes 20/30 m³
+  </div>
+
+</div>
+
+<script>
+const apiUrl =
+"https://script.google.com/macros/s/AKfycbxzDm5eFhssortkYGgtkA6hJqfSuSwYYpJyjrz0Ip0YzRxHFqkMp6XJ-jv5heQikCID/exec";
+
+const firstPageIndexes = [0,1,2,3,4,5,6,7,8];
+
+function formatPrice(value) {
+  if (value === "" || value === null) return "";
+
+  return Number(value).toLocaleString("fr-FR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
+
+function displayTarifs(data) {
+  const table = document.getElementById("table");
+  table.innerHTML = "";
+
+  document.getElementById("updated").textContent =
+    "Mis à jour le " + data.updateDate;
+
+  firstPageIndexes.forEach(index => {
+    const item = data.tarifs[index];
+    if (!item) return;
+
+    const name = item[0];
+    const price = item[1];
+    const unit = item[3];
+    const evolution = item[4];
+
+    const row = document.createElement("div");
+    row.className = "row";
+
+    let trendClass = "";
+    if (evolution === "↑") trendClass = "up";
+    if (evolution === "↓") trendClass = "down";
+
+    row.innerHTML = `
+      <div class="name">${name}</div>
+      <div class="price">${formatPrice(price)}</div>
+      <div class="unit">${unit}</div>
+      <div class="trend ${trendClass}">${evolution || ""}</div>
+    `;
+
+    table.appendChild(row);
+  });
+}
+
+function loadData() {
+  const callbackName = "kervoelenCallback_" + Date.now();
+
+  window[callbackName] = function(data) {
+    displayTarifs(data);
+    delete window[callbackName];
+    script.remove();
+  };
+
+  const script = document.createElement("script");
+  script.src =
+    apiUrl +
+    "?callback=" +
+    callbackName +
+    "&t=" +
+    Date.now();
+
+  script.onerror = function() {
+    document.getElementById("updated").textContent =
+      "Erreur de connexion";
+    delete window[callbackName];
+    script.remove();
+  };
+
+  document.body.appendChild(script);
+}
+
+loadData();
+setInterval(loadData, 60000);
+</script>
+
+</body>
+</html>
