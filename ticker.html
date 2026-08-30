@@ -28,20 +28,18 @@ html, body {
 
 .ticker-track {
   display: flex;
-  align-items: center;
   width: max-content;
   white-space: nowrap;
-  animation: scroll 45s linear infinite;
+  animation: scroll 50s linear infinite;
 }
 
 .ticker-content {
   display: flex;
-  align-items: center;
   flex-shrink: 0;
 }
 
 .item {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   font-size: 4.5vh;
   font-weight: 700;
@@ -51,17 +49,17 @@ html, body {
 
 .price {
   color: #f4c20d;
-  margin-left: 12px;
+  margin-left: 14px;
 }
 
 .up {
-  color: #35d06f;
-  margin-left: 8px;
+  color: #38d66b;
+  margin-left: 10px;
 }
 
 .down {
   color: #ff4d4d;
-  margin-left: 8px;
+  margin-left: 10px;
 }
 
 .separator {
@@ -70,12 +68,8 @@ html, body {
 }
 
 @keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 </style>
 </head>
@@ -91,6 +85,60 @@ html, body {
 const csvURL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vRHVwxFF8EtnjJ3l22DAsEHPXpF_UmZ13_azpmzSweG2NMwTA8OowKFDqsmHEn5GXMvug7ii0JZCgUv/pub?gid=0&single=true&output=csv";
 
+function parseCSV(text) {
+
+  const rows = [];
+  let row = [];
+  let value = "";
+  let insideQuotes = false;
+
+  for (let i = 0; i < text.length; i++) {
+
+    const char = text[i];
+
+    if (char === '"') {
+      if (insideQuotes && text[i + 1] === '"') {
+        value += '"';
+        i++;
+      } else {
+        insideQuotes = !insideQuotes;
+      }
+    }
+
+    else if (char === "," && !insideQuotes) {
+      row.push(value);
+      value = "";
+    }
+
+    else if ((char === "\n" || char === "\r") && !insideQuotes) {
+
+      if (char === "\r" && text[i + 1] === "\n") {
+        i++;
+      }
+
+      row.push(value);
+
+      if (row.some(cell => cell !== "")) {
+        rows.push(row);
+      }
+
+      row = [];
+      value = "";
+    }
+
+    else {
+      value += char;
+    }
+  }
+
+  if (value || row.length) {
+    row.push(value);
+    rows.push(row);
+  }
+
+  return rows;
+}
+
 async function loadPrices() {
 
   try {
@@ -98,20 +146,16 @@ async function loadPrices() {
     const response = await fetch(csvURL + "&t=" + Date.now());
     const text = await response.text();
 
-    const rows = text.trim().split("\n").slice(1);
+    const rows = parseCSV(text).slice(1);
 
     let html = "";
 
-    rows.forEach(row => {
+    rows.forEach(cols => {
 
-      const cols = row
-        .split(",")
-        .map(c => c.replace(/^"|"$/g, "").trim());
-
-      const material = cols[0];
-      const price = cols[1];
-      const unit = cols[3];
-      const evolution = cols[4];
+      const material = (cols[0] || "").trim();
+      const price = (cols[1] || "").trim();
+      const unit = (cols[3] || "").trim();
+      const evolution = (cols[4] || "").trim();
 
       if (!material || !price) return;
 
@@ -126,30 +170,25 @@ async function loadPrices() {
       }
 
       html += `
-        <span class="item">
+        <div class="item">
           ${material.toUpperCase()}
           <span class="price">${price} ${unit}</span>
           ${arrow}
           <span class="separator">•</span>
-        </span>
+        </div>
       `;
     });
 
-    /* Deux copies identiques = défilement continu */
     document.getElementById("track").innerHTML =
       `<div class="ticker-content">${html}</div>
        <div class="ticker-content">${html}</div>`;
 
-  }
-
-  catch(error) {
-    console.error("Erreur chargement tarifs :", error);
+  } catch (error) {
+    console.error(error);
   }
 }
 
 loadPrices();
-
-/* Actualisation automatique toutes les 5 minutes */
 setInterval(loadPrices, 300000);
 
 </script>
