@@ -8,14 +8,11 @@
 <title>KERVOELEN</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box;}
 
 :root{
   --black:#090909;
   --card:#151515;
-  --card2:#1d1d1d;
   --yellow:#f4c20d;
   --white:#ffffff;
   --grey:#a9a9a9;
@@ -74,7 +71,7 @@ body{
   margin:16px auto 0;
 }
 
-/* TARIFS PREVIEW */
+/* TARIFS ACCUEIL */
 
 .price-card{
   margin:18px;
@@ -144,7 +141,7 @@ body{
   cursor:pointer;
 }
 
-/* BUTTON GRID */
+/* TUILES */
 
 .grid{
   display:grid;
@@ -181,13 +178,8 @@ body{
 
 /* PAGES */
 
-.page{
-  display:none;
-}
-
-.page.active{
-  display:block;
-}
+.page{display:none;}
+.page.active{display:block;}
 
 .page-header{
   padding:28px 20px 18px;
@@ -222,6 +214,8 @@ body{
 .full-row:last-child{
   border-bottom:none;
 }
+
+/* HORAIRES */
 
 .hours{
   margin:18px;
@@ -259,9 +253,22 @@ body{
   background:#151515;
 }
 
+.contact-box > strong{
+  display:block;
+  font-size:22px;
+  margin-bottom:8px;
+}
+
+.contact-info{
+  color:var(--grey);
+  font-size:14px;
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
 .big-button{
   display:block;
-  padding:17px;
+  padding:17px 14px;
   margin-top:12px;
   text-align:center;
   border-radius:12px;
@@ -271,7 +278,7 @@ body{
   font-weight:800;
 }
 
-/* NAV */
+/* NAVIGATION */
 
 .nav{
   position:fixed;
@@ -305,6 +312,7 @@ body{
 .nav button.active{
   color:var(--yellow);
 }
+
 </style>
 </head>
 
@@ -312,16 +320,16 @@ body{
 
 <div class="app">
 
-<!-- ACCUEIL -->
+<!-- ================= ACCUEIL ================= -->
 
 <section id="home" class="page active">
 
   <div class="header">
 
-    <!-- Ton logo officiel -->
-    <img class="logo"
-         src="logo-kervoelen-transparent2.png"
-         alt="KERVOELEN SAS">
+    <img
+      class="logo"
+      src="logo-kervoelen-transparent2.png"
+      alt="KERVOELEN SAS">
 
     <div class="welcome">
       Ensemble, valorisons le recyclage
@@ -333,13 +341,17 @@ body{
 
   </div>
 
+
   <div class="price-card">
 
     <div class="price-title">
+
       <strong>Tarifs du jour</strong>
+
       <div class="updated" id="updatedHome">
         Chargement...
       </div>
+
     </div>
 
     <div id="previewPrices"></div>
@@ -350,31 +362,60 @@ body{
 
   </div>
 
+
   <div class="grid">
 
     <div class="tile" onclick="showPage('tarifs')">
+
       <div class="icon">↗</div>
+
       <strong>TARIFS</strong>
-      <small>Consultez nos prix du jour</small>
+
+      <small>
+        Consultez nos prix du jour
+      </small>
+
     </div>
+
 
     <div class="tile" onclick="showPage('horaires')">
+
       <div class="icon">◷</div>
+
       <strong>HORAIRES</strong>
-      <small>Nos horaires d'ouverture</small>
+
+      <small>
+        Nos horaires d'ouverture
+      </small>
+
     </div>
 
-    <div class="tile"
-         onclick="window.open('https://www.google.com/maps/search/?api=1&query=KERVOELEN+SAS','_blank')">
+
+    <div
+      class="tile"
+      onclick="window.open('https://www.google.com/maps/search/?api=1&query=KERVOELEN+SAS','_blank')">
+
       <div class="icon">⌖</div>
+
       <strong>NOUS TROUVER</strong>
-      <small>Itinéraire et plan d'accès</small>
+
+      <small>
+        Itinéraire et plan d'accès
+      </small>
+
     </div>
+
 
     <div class="tile" onclick="showPage('contact')">
+
       <div class="icon">☎</div>
+
       <strong>CONTACT</strong>
-      <small>Site web et informations</small>
+
+      <small>
+        Téléphone, e-mail et site internet
+      </small>
+
     </div>
 
   </div>
@@ -382,64 +423,101 @@ body{
 </section>
 
 
-<!-- TARIFS -->
+<!-- ================= TARIFS ================= -->
 
 <section id="tarifs" class="page">
 
   <div class="page-header">
+
     <h2>TARIFS DU JOUR</h2>
-    <p id="updatedFull">Mise à jour...</p>
+
+    <p id="updatedFull">
+      Mise à jour...
+    </p>
+
   </div>
 
-  <div class="full-list" id="allPrices"></div>
+  <div
+    class="full-list"
+    id="allPrices">
+  </div>
 
 </section>
 
 
-<!-- HORAIRES -->
+<!-- ================= HORAIRES ================= -->
 
 <section id="horaires" class="page">
 
   <div class="page-header">
+
     <h2>HORAIRES</h2>
+
     <p>KERVOELEN SAS</p>
+
   </div>
+
 
   <div class="hours">
 
     <div class="hour">
       <strong>Lundi</strong>
-      <span>09h00–12h00<br>14h00–17h00</span>
+      <span>
+        09h00–12h00<br>
+        14h00–17h00
+      </span>
     </div>
+
 
     <div class="hour">
       <strong>Mardi</strong>
-      <span>09h00–12h00<br>14h00–17h30</span>
+      <span>
+        09h00–12h00<br>
+        14h00–17h30
+      </span>
     </div>
+
 
     <div class="hour">
       <strong>Mercredi</strong>
-      <span>09h00–12h00<br>14h00–17h30</span>
+      <span>
+        09h00–12h00<br>
+        14h00–17h30
+      </span>
     </div>
+
 
     <div class="hour">
       <strong>Jeudi</strong>
-      <span>09h00–12h00<br>14h00–17h30</span>
+      <span>
+        09h00–12h00<br>
+        14h00–17h30
+      </span>
     </div>
+
 
     <div class="hour">
       <strong>Vendredi</strong>
-      <span>09h00–12h00<br>14h00–17h00</span>
+      <span>
+        09h00–12h00<br>
+        14h00–17h00
+      </span>
     </div>
+
 
     <div class="hour saturday">
       <strong>Samedi</strong>
-      <span>08h30–11h00</span>
+      <span>
+        08h30–11h00
+      </span>
     </div>
+
 
     <div class="hour">
       <strong>Dimanche</strong>
-      <span class="closed">FERMÉ</span>
+      <span class="closed">
+        FERMÉ
+      </span>
     </div>
 
   </div>
@@ -447,29 +525,66 @@ body{
 </section>
 
 
-<!-- CONTACT -->
+<!-- ================= CONTACT ================= -->
 
 <section id="contact" class="page">
 
   <div class="page-header">
+
     <h2>CONTACT</h2>
-    <p>Une question ? Retrouvez toutes nos informations.</p>
+
+    <p>
+      Une question ? Contactez directement notre équipe.
+    </p>
+
   </div>
+
 
   <div class="contact-box">
 
     <strong>KERVOELEN SAS</strong>
 
-    <a class="big-button"
-       href="https://kervoelen.com/"
-       target="_blank">
-       VISITER KERVOELEN.COM
+    <div class="contact-info">
+      📞 02 76 12 19 94<br>
+      ✉️ kervoelensas@gmail.com
+    </div>
+
+
+    <a
+      class="big-button"
+      href="tel:+33276121994">
+
+      📞 APPELER — 02 76 12 19 94
+
     </a>
 
-    <a class="big-button"
-       href="https://www.google.com/maps/search/?api=1&query=KERVOELEN+SAS"
-       target="_blank">
-       NOUS TROUVER
+
+    <a
+      class="big-button"
+      href="mailto:kervoelensas@gmail.com">
+
+      ✉️ ENVOYER UN E-MAIL
+
+    </a>
+
+
+    <a
+      class="big-button"
+      href="https://www.google.com/maps/search/?api=1&query=KERVOELEN+SAS"
+      target="_blank">
+
+      📍 NOUS TROUVER
+
+    </a>
+
+
+    <a
+      class="big-button"
+      href="https://kervoelen.com/"
+      target="_blank">
+
+      🌐 KERVOELEN.COM
+
     </a>
 
   </div>
@@ -477,33 +592,48 @@ body{
 </section>
 
 
-<!-- NAVIGATION -->
+<!-- ================= NAVIGATION ================= -->
 
 <div class="nav">
 
-  <button id="nav-home"
-          class="active"
-          onclick="showPage('home')">
+  <button
+    id="nav-home"
+    class="active"
+    onclick="showPage('home')">
+
     <span>⌂</span>
     ACCUEIL
+
   </button>
 
-  <button id="nav-tarifs"
-          onclick="showPage('tarifs')">
+
+  <button
+    id="nav-tarifs"
+    onclick="showPage('tarifs')">
+
     <span>◇</span>
     TARIFS
+
   </button>
 
-  <button id="nav-horaires"
-          onclick="showPage('horaires')">
+
+  <button
+    id="nav-horaires"
+    onclick="showPage('horaires')">
+
     <span>◷</span>
     HORAIRES
+
   </button>
 
-  <button id="nav-contact"
-          onclick="showPage('contact')">
+
+  <button
+    id="nav-contact"
+    onclick="showPage('contact')">
+
     <span>•••</span>
     CONTACT
+
   </button>
 
 </div>
@@ -516,6 +646,8 @@ body{
 const csvURL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vRHVwxFF8EtnjJ3l22DAsEHPXpF_UmZ13_azpmzSweG2NMwTA8OowKFDqsmHEn5GXMvug7ii0JZCgUv/pub?gid=0&single=true&output=csv";
 
+
+/* ================= LECTURE CSV ================= */
 
 function parseCSV(text){
 
@@ -531,22 +663,36 @@ function parseCSV(text){
     if(c==='"'){
 
       if(quoted && text[i+1]==='"'){
+
         value+='"';
         i++;
+
       }else{
+
         quoted=!quoted;
+
       }
 
     }
 
     else if(c==="," && !quoted){
+
       row.push(value);
       value="";
+
     }
 
-    else if((c==="\n" || c==="\r") && !quoted){
+    else if(
+      (c==="\n" || c==="\r")
+      && !quoted
+    ){
 
-      if(c==="\r" && text[i+1]==="\n") i++;
+      if(
+        c==="\r"
+        && text[i+1]==="\n"
+      ){
+        i++;
+      }
 
       row.push(value);
 
@@ -560,40 +706,55 @@ function parseCSV(text){
     }
 
     else{
+
       value+=c;
+
     }
 
   }
 
   if(value || row.length){
+
     row.push(value);
     rows.push(row);
+
   }
 
   return rows;
 }
 
 
+/* ================= FLÈCHES ================= */
+
 function arrowHTML(evolution){
 
   if(evolution==="↑"){
+
     return '<span class="arrow up">▲</span>';
+
   }
 
   if(evolution==="↓"){
+
     return '<span class="arrow down">▼</span>';
+
   }
 
   return '<span class="arrow flat">–</span>';
+
 }
 
+
+/* ================= CHARGEMENT TARIFS ================= */
 
 async function loadPrices(){
 
   try{
 
     const response=
-      await fetch(csvURL+"&t="+Date.now());
+      await fetch(
+        csvURL+"&t="+Date.now()
+      );
 
     const text=
       await response.text();
@@ -603,120 +764,177 @@ async function loadPrices(){
 
     const data=[];
 
+
     rows.forEach(cols=>{
 
-      const material=(cols[0]||"").trim();
-      const price=(cols[1]||"").trim();
-      const unit=(cols[3]||"").trim();
-      const evolution=(cols[4]||"").trim();
+      const material=
+        (cols[0]||"").trim();
 
-      if(!material || !price) return;
+      const price=
+        (cols[1]||"").trim();
+
+      const unit=
+        (cols[3]||"").trim();
+
+      const evolution=
+        (cols[4]||"").trim();
+
+
+      if(!material || !price){
+        return;
+      }
+
 
       data.push({
+
         material,
         price,
         unit,
         evolution
+
       });
 
     });
 
 
-    /* TARIFS MIS EN AVANT SUR ACCUEIL */
+    /* ===== TARIFS ACCUEIL ===== */
 
     const preferred=[
+
       "Cuivre Millberry",
       "Laiton",
       "Alu Mêlé",
       "Inox"
+
     ];
+
 
     const preview=
       preferred
-      .map(name=>data.find(x=>x.material===name))
+      .map(
+        name=>
+        data.find(
+          x=>x.material===name
+        )
+      )
       .filter(Boolean);
 
 
     let previewHTML="";
 
+
     preview.forEach(item=>{
 
       previewHTML+=`
 
-      <div class="price-row">
+        <div class="price-row">
 
-        <div class="material">
-          ${item.material.toUpperCase()}
+          <div class="material">
+
+            ${item.material.toUpperCase()}
+
+          </div>
+
+
+          <div class="price">
+
+            ${item.price} ${item.unit}
+
+          </div>
+
+
+          ${arrowHTML(item.evolution)}
+
         </div>
-
-        <div class="price">
-          ${item.price} ${item.unit}
-        </div>
-
-        ${arrowHTML(item.evolution)}
-
-      </div>
 
       `;
 
     });
 
-    document.getElementById("previewPrices")
+
+    document
+      .getElementById("previewPrices")
       .innerHTML=previewHTML;
 
 
-    /* LISTE COMPLÈTE */
+    /* ===== TOUS LES TARIFS ===== */
 
     let fullHTML="";
+
 
     data.forEach(item=>{
 
       fullHTML+=`
 
-      <div class="full-row">
+        <div class="full-row">
 
-        <div class="material">
-          ${item.material}
+          <div class="material">
+
+            ${item.material}
+
+          </div>
+
+
+          <div class="price">
+
+            ${item.price} ${item.unit}
+
+          </div>
+
+
+          ${arrowHTML(item.evolution)}
+
         </div>
-
-        <div class="price">
-          ${item.price} ${item.unit}
-        </div>
-
-        ${arrowHTML(item.evolution)}
-
-      </div>
 
       `;
 
     });
 
-    document.getElementById("allPrices")
+
+    document
+      .getElementById("allPrices")
       .innerHTML=fullHTML;
 
 
+    /* ===== DATE ACTUALISATION ===== */
+
     const now=new Date();
 
+
     const dateText=
-      now.toLocaleDateString("fr-FR")+
-      " • "+
-      now.toLocaleTimeString("fr-FR",{
-        hour:"2-digit",
-        minute:"2-digit"
-      });
 
-    document.getElementById("updatedHome")
-      .textContent="Mise à jour "+dateText;
+      now.toLocaleDateString("fr-FR")
 
-    document.getElementById("updatedFull")
-      .textContent="Dernière actualisation : "+dateText;
+      +" • "+
+
+      now.toLocaleTimeString(
+        "fr-FR",
+        {
+          hour:"2-digit",
+          minute:"2-digit"
+        }
+      );
+
+
+    document
+      .getElementById("updatedHome")
+      .textContent=
+      "Mise à jour "+dateText;
+
+
+    document
+      .getElementById("updatedFull")
+      .textContent=
+      "Dernière actualisation : "+dateText;
 
   }
 
   catch(error){
 
-    document.getElementById("updatedHome")
-      .textContent="Tarifs indisponibles";
+    document
+      .getElementById("updatedHome")
+      .textContent=
+      "Tarifs indisponibles";
 
     console.error(error);
 
@@ -725,11 +943,16 @@ async function loadPrices(){
 }
 
 
+/* ================= NAVIGATION ================= */
+
 function showPage(page){
 
   document
     .querySelectorAll(".page")
-    .forEach(p=>p.classList.remove("active"));
+    .forEach(
+      p=>p.classList.remove("active")
+    );
+
 
   document
     .getElementById(page)
@@ -738,14 +961,21 @@ function showPage(page){
 
   document
     .querySelectorAll(".nav button")
-    .forEach(b=>b.classList.remove("active"));
+    .forEach(
+      b=>b.classList.remove("active")
+    );
 
 
   const nav=
-    document.getElementById("nav-"+page);
+    document.getElementById(
+      "nav-"+page
+    );
+
 
   if(nav){
+
     nav.classList.add("active");
+
   }
 
 
@@ -757,11 +987,23 @@ function showPage(page){
 }
 
 
+/* PREMIER CHARGEMENT */
+
 loadPrices();
 
-/* Actualisation automatique */
-setInterval(loadPrices,300000);
 
+/* ACTUALISATION AUTOMATIQUE
+   TOUTES LES 5 MINUTES */
+
+setInterval(
+  loadPrices,
+  300000
+);
+
+</script>
+
+</body>
+</html>
 </script>
 
 </body>
