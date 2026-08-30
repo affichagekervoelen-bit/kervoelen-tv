@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1, viewport-fit=cover">
+
 <meta name="theme-color" content="#0b0b0b">
 
 <title>KERVOELEN</title>
-  <link rel="manifest" href="manifest.json">
+
+<link rel="manifest" href="manifest.json">
 
 <link rel="apple-touch-icon" href="icon-512.png">
 
@@ -16,8 +22,12 @@
 
 <meta name="apple-mobile-web-app-title" content="KERVOELEN">
 
+
 <style>
-*{box-sizing:border-box;}
+
+*{
+  box-sizing:border-box;
+}
 
 :root{
   --black:#090909;
@@ -43,14 +53,24 @@ body{
   padding-bottom:95px;
 }
 
-/* HEADER */
+
+/* ================= HEADER ================= */
 
 .header{
   text-align:center;
   padding:26px 20px 18px;
+
   background:
-    radial-gradient(circle at top right,#332900 0%,transparent 35%),
-    linear-gradient(180deg,#111,#090909);
+    radial-gradient(
+      circle at top right,
+      #332900 0%,
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #111,
+      #090909
+    );
 }
 
 .logo{
@@ -80,14 +100,21 @@ body{
   margin:16px auto 0;
 }
 
-/* TARIFS ACCUEIL */
+
+/* ================= TARIFS ACCUEIL ================= */
 
 .price-card{
   margin:18px;
   border:1px solid #333;
   border-radius:20px;
   overflow:hidden;
-  background:linear-gradient(145deg,#1b1b1b,#111);
+
+  background:
+    linear-gradient(
+      145deg,
+      #1b1b1b,
+      #111
+    );
 }
 
 .price-title{
@@ -113,7 +140,9 @@ body{
   grid-template-columns:1fr auto auto;
   gap:12px;
   align-items:center;
+
   padding:15px 20px;
+
   border-bottom:1px solid #292929;
 }
 
@@ -137,9 +166,17 @@ body{
   font-weight:bold;
 }
 
-.up{color:var(--green);}
-.down{color:var(--red);}
-.flat{color:#aaa;}
+.up{
+  color:var(--green);
+}
+
+.down{
+  color:var(--red);
+}
+
+.flat{
+  color:#aaa;
+}
 
 .all-prices{
   display:block;
@@ -150,7 +187,37 @@ body{
   cursor:pointer;
 }
 
-/* TUILES */
+
+/* ================= INSTALLATION ================= */
+
+.install-area{
+  margin:18px;
+}
+
+.install-button{
+  width:100%;
+  border:none;
+  padding:17px;
+  border-radius:15px;
+
+  background:var(--yellow);
+  color:#111;
+
+  font-size:15px;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.install-subtitle{
+  margin-top:8px;
+  text-align:center;
+  color:#777;
+  font-size:11px;
+}
+
+
+/* ================= TUILES ================= */
 
 .grid{
   display:grid;
@@ -162,9 +229,17 @@ body{
 .tile{
   min-height:125px;
   padding:18px;
+
   border:1px solid #333;
   border-radius:18px;
-  background:linear-gradient(145deg,#181818,#101010);
+
+  background:
+    linear-gradient(
+      145deg,
+      #181818,
+      #101010
+    );
+
   cursor:pointer;
 }
 
@@ -185,10 +260,16 @@ body{
   line-height:1.35;
 }
 
-/* PAGES */
 
-.page{display:none;}
-.page.active{display:block;}
+/* ================= PAGES ================= */
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
 
 .page-header{
   padding:28px 20px 18px;
@@ -215,8 +296,11 @@ body{
   grid-template-columns:1fr auto auto;
   align-items:center;
   gap:10px;
+
   padding:15px 17px;
+
   background:#131313;
+
   border-bottom:1px solid #2b2b2b;
 }
 
@@ -224,7 +308,8 @@ body{
   border-bottom:none;
 }
 
-/* HORAIRES */
+
+/* ================= HORAIRES ================= */
 
 .hours{
   margin:18px;
@@ -236,7 +321,9 @@ body{
 .hour{
   display:flex;
   justify-content:space-between;
+
   padding:16px 18px;
+
   border-bottom:1px solid #2a2a2a;
 }
 
@@ -252,13 +339,16 @@ body{
   color:var(--red);
 }
 
-/* CONTACT */
+
+/* ================= CONTACT ================= */
 
 .contact-box{
   margin:18px;
   padding:22px;
+
   border-radius:18px;
   border:1px solid #333;
+
   background:#151515;
 }
 
@@ -271,44 +361,180 @@ body{
 .contact-info{
   color:var(--grey);
   font-size:14px;
-  line-height:1.6;
+  line-height:1.7;
   margin-bottom:20px;
 }
 
 .big-button{
   display:block;
+
   padding:17px 14px;
   margin-top:12px;
+
   text-align:center;
+
   border-radius:12px;
+
   background:var(--yellow);
   color:#111;
+
   text-decoration:none;
   font-weight:800;
 }
 
-/* NAVIGATION */
+
+/* ================= MODAL INSTALLATION ================= */
+
+.modal{
+  display:none;
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:9999;
+
+  background:rgba(0,0,0,.82);
+
+  align-items:flex-end;
+  justify-content:center;
+
+  padding:15px;
+}
+
+.modal.open{
+  display:flex;
+}
+
+.modal-box{
+  width:100%;
+  max-width:560px;
+
+  background:#171717;
+
+  border:1px solid #444;
+
+  border-radius:24px;
+
+  padding:24px;
+
+  box-shadow:
+    0 -10px 50px rgba(0,0,0,.7);
+}
+
+.modal-icon{
+  text-align:center;
+  font-size:45px;
+}
+
+.modal-box h3{
+  margin:12px 0 6px;
+
+  text-align:center;
+
+  font-size:24px;
+}
+
+.modal-intro{
+  margin:0 0 20px;
+
+  text-align:center;
+
+  color:var(--grey);
+
+  line-height:1.4;
+}
+
+.install-step{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+
+  padding:13px 0;
+
+  border-bottom:1px solid #303030;
+}
+
+.install-step:last-of-type{
+  border-bottom:none;
+}
+
+.step-number{
+  flex:0 0 32px;
+
+  width:32px;
+  height:32px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:var(--yellow);
+  color:#111;
+
+  font-weight:900;
+}
+
+.step-text{
+  line-height:1.4;
+}
+
+.close-modal{
+  width:100%;
+
+  margin-top:20px;
+  padding:15px;
+
+  border:0;
+  border-radius:12px;
+
+  background:#2a2a2a;
+  color:white;
+
+  font-weight:800;
+
+  cursor:pointer;
+}
+
+
+/* ================= NAVIGATION ================= */
 
 .nav{
   position:fixed;
+
   bottom:0;
   left:0;
   right:0;
+
   max-width:600px;
+
   margin:auto;
+
   display:grid;
   grid-template-columns:repeat(4,1fr);
+
   background:rgba(12,12,12,.96);
+
   backdrop-filter:blur(12px);
+
   border-top:1px solid #333;
-  padding:11px 5px calc(11px + env(safe-area-inset-bottom));
+
+  padding:
+    11px
+    5px
+    calc(11px + env(safe-area-inset-bottom));
 }
 
 .nav button{
   border:0;
   background:none;
+
   color:#888;
+
   font-size:11px;
+
   cursor:pointer;
 }
 
@@ -323,697 +549,1282 @@ body{
 }
 
 </style>
+
 </head>
+
 
 <body>
 
 <div class="app">
 
+
 <!-- ================= ACCUEIL ================= -->
 
 <section id="home" class="page active">
 
-  <div class="header">
 
-    <img
-      class="logo"
-      src="logo-kervoelen-transparent2.png"
-      alt="KERVOELEN SAS">
+<div class="header">
 
-    <div class="welcome">
-      Ensemble, valorisons le recyclage
-    </div>
-
-    <h1>Bienvenue</h1>
-
-    <div class="yellow-line"></div>
-
-  </div>
+<img
+class="logo"
+src="logo-kervoelen-transparent2.png"
+alt="KERVOELEN SAS">
 
 
-  <div class="price-card">
-
-    <div class="price-title">
-
-      <strong>Tarifs du jour</strong>
-
-      <div class="updated" id="updatedHome">
-        Chargement...
-      </div>
-
-    </div>
-
-    <div id="previewPrices"></div>
-
-    <div class="all-prices" onclick="showPage('tarifs')">
-      VOIR TOUS LES TARIFS ›
-    </div>
-
-  </div>
+<div class="welcome">
+Ensemble, valorisons le recyclage
+</div>
 
 
-  <div class="grid">
+<h1>Bienvenue</h1>
 
-    <div class="tile" onclick="showPage('tarifs')">
+<div class="yellow-line"></div>
 
-      <div class="icon">↗</div>
-
-      <strong>TARIFS</strong>
-
-      <small>
-        Consultez nos prix du jour
-      </small>
-
-    </div>
+</div>
 
 
-    <div class="tile" onclick="showPage('horaires')">
 
-      <div class="icon">◷</div>
+<div class="price-card">
 
-      <strong>HORAIRES</strong>
+<div class="price-title">
 
-      <small>
-        Nos horaires d'ouverture
-      </small>
+<strong>
+Tarifs du jour
+</strong>
 
-    </div>
+<div
+class="updated"
+id="updatedHome">
 
+Chargement...
 
-    <div
-      class="tile"
-      onclick="window.open('https://www.google.com/maps/search/?api=1&query=KERVOELEN+SAS','_blank')">
+</div>
 
-      <div class="icon">⌖</div>
-
-      <strong>NOUS TROUVER</strong>
-
-      <small>
-        Itinéraire et plan d'accès
-      </small>
-
-    </div>
+</div>
 
 
-    <div class="tile" onclick="showPage('contact')">
+<div id="previewPrices"></div>
 
-      <div class="icon">☎</div>
 
-      <strong>CONTACT</strong>
+<div
+class="all-prices"
+onclick="showPage('tarifs')">
 
-      <small>
-        Téléphone, e-mail et site internet
-      </small>
+VOIR TOUS LES TARIFS ›
 
-    </div>
+</div>
 
-  </div>
+</div>
+
+
+
+<!-- BOUTON INSTALLATION -->
+
+<div
+class="install-area"
+id="installArea">
+
+<button
+class="install-button"
+onclick="installApp()">
+
+📲 INSTALLER L’APPLICATION KERVOELEN
+
+</button>
+
+
+<div class="install-subtitle">
+
+Accès rapide aux tarifs, horaires et contacts
+
+</div>
+
+</div>
+
+
+
+<div class="grid">
+
+
+<div
+class="tile"
+onclick="showPage('tarifs')">
+
+<div class="icon">
+↗
+</div>
+
+<strong>
+TARIFS
+</strong>
+
+<small>
+Consultez nos prix du jour
+</small>
+
+</div>
+
+
+
+<div
+class="tile"
+onclick="showPage('horaires')">
+
+<div class="icon">
+◷
+</div>
+
+<strong>
+HORAIRES
+</strong>
+
+<small>
+Nos horaires d'ouverture
+</small>
+
+</div>
+
+
+
+<div
+class="tile"
+onclick="
+window.open(
+'https://www.google.com/maps/search/?api=1&query=KERVOELEN+SAS',
+'_blank'
+)
+">
+
+<div class="icon">
+⌖
+</div>
+
+<strong>
+NOUS TROUVER
+</strong>
+
+<small>
+Itinéraire et plan d'accès
+</small>
+
+</div>
+
+
+
+<div
+class="tile"
+onclick="showPage('contact')">
+
+<div class="icon">
+☎
+</div>
+
+<strong>
+CONTACT
+</strong>
+
+<small>
+Téléphone, e-mail et site internet
+</small>
+
+</div>
+
+
+</div>
 
 </section>
+
 
 
 <!-- ================= TARIFS ================= -->
 
-<section id="tarifs" class="page">
+<section
+id="tarifs"
+class="page">
 
-  <div class="page-header">
+<div class="page-header">
 
-    <h2>TARIFS DU JOUR</h2>
+<h2>
+TARIFS DU JOUR
+</h2>
 
-    <p id="updatedFull">
-      Mise à jour...
-    </p>
+<p id="updatedFull">
+Mise à jour...
+</p>
 
-  </div>
+</div>
 
-  <div
-    class="full-list"
-    id="allPrices">
-  </div>
+
+<div
+class="full-list"
+id="allPrices">
+</div>
 
 </section>
+
 
 
 <!-- ================= HORAIRES ================= -->
 
-<section id="horaires" class="page">
-
-  <div class="page-header">
-
-    <h2>HORAIRES</h2>
-
-    <p>KERVOELEN SAS</p>
-
-  </div>
+<section
+id="horaires"
+class="page">
 
 
-  <div class="hours">
+<div class="page-header">
 
-    <div class="hour">
-      <strong>Lundi</strong>
-      <span>
-        09h00–12h00<br>
-        14h00–17h00
-      </span>
-    </div>
+<h2>
+HORAIRES
+</h2>
 
+<p>
+KERVOELEN SAS
+</p>
 
-    <div class="hour">
-      <strong>Mardi</strong>
-      <span>
-        09h00–12h00<br>
-        14h00–17h30
-      </span>
-    </div>
+</div>
 
 
-    <div class="hour">
-      <strong>Mercredi</strong>
-      <span>
-        09h00–12h00<br>
-        14h00–17h30
-      </span>
-    </div>
+
+<div class="hours">
 
 
-    <div class="hour">
-      <strong>Jeudi</strong>
-      <span>
-        09h00–12h00<br>
-        14h00–17h30
-      </span>
-    </div>
+<div class="hour">
+
+<strong>
+Lundi
+</strong>
+
+<span>
+09h00–12h00<br>
+14h00–17h00
+</span>
+
+</div>
 
 
-    <div class="hour">
-      <strong>Vendredi</strong>
-      <span>
-        09h00–12h00<br>
-        14h00–17h00
-      </span>
-    </div>
+<div class="hour">
+
+<strong>
+Mardi
+</strong>
+
+<span>
+09h00–12h00<br>
+14h00–17h30
+</span>
+
+</div>
 
 
-    <div class="hour saturday">
-      <strong>Samedi</strong>
-      <span>
-        08h30–11h00
-      </span>
-    </div>
+<div class="hour">
+
+<strong>
+Mercredi
+</strong>
+
+<span>
+09h00–12h00<br>
+14h00–17h30
+</span>
+
+</div>
 
 
-    <div class="hour">
-      <strong>Dimanche</strong>
-      <span class="closed">
-        FERMÉ
-      </span>
-    </div>
+<div class="hour">
 
-  </div>
+<strong>
+Jeudi
+</strong>
+
+<span>
+09h00–12h00<br>
+14h00–17h30
+</span>
+
+</div>
+
+
+<div class="hour">
+
+<strong>
+Vendredi
+</strong>
+
+<span>
+09h00–12h00<br>
+14h00–17h00
+</span>
+
+</div>
+
+
+<div class="hour saturday">
+
+<strong>
+Samedi
+</strong>
+
+<span>
+08h30–11h00
+</span>
+
+</div>
+
+
+<div class="hour">
+
+<strong>
+Dimanche
+</strong>
+
+<span class="closed">
+FERMÉ
+</span>
+
+</div>
+
+
+</div>
 
 </section>
+
 
 
 <!-- ================= CONTACT ================= -->
 
-<section id="contact" class="page">
-
-  <div class="page-header">
-
-    <h2>CONTACT</h2>
-
-    <p>
-      Une question ? Contactez directement notre équipe.
-    </p>
-
-  </div>
+<section
+id="contact"
+class="page">
 
 
-  <div class="contact-box">
+<div class="page-header">
 
-    <strong>KERVOELEN SAS</strong>
+<h2>
+CONTACT
+</h2>
 
-    <div class="contact-info">
-      📞 02 76 12 19 94<br>
-      ✉️ kervoelensas@gmail.com
-    </div>
+<p>
+Une question ? Contactez directement notre équipe.
+</p>
 
-
-    <a
-      class="big-button"
-      href="tel:+33276121994">
-
-      📞 APPELER — 02 76 12 19 94
-
-    </a>
+</div>
 
 
-    <a
-      class="big-button"
-      href="mailto:kervoelensas@gmail.com">
 
-      ✉️ ENVOYER UN E-MAIL
-
-    </a>
+<div class="contact-box">
 
 
-    <a
-      class="big-button"
-      href="https://www.google.com/maps/search/?api=1&query=KERVOELEN+SAS"
-      target="_blank">
-
-      📍 NOUS TROUVER
-
-    </a>
+<strong>
+KERVOELEN SAS
+</strong>
 
 
-    <a
-      class="big-button"
-      href="https://kervoelen.com/"
-      target="_blank">
+<div class="contact-info">
 
-      🌐 KERVOELEN.COM
+📞 02 76 12 19 94<br>
 
-    </a>
+✉️ kervoelensas@gmail.com
 
-  </div>
+</div>
+
+
+
+<a
+class="big-button"
+href="tel:+33276121994">
+
+📞 APPELER — 02 76 12 19 94
+
+</a>
+
+
+
+<a
+class="big-button"
+href="mailto:kervoelensas@gmail.com">
+
+✉️ ENVOYER UN E-MAIL
+
+</a>
+
+
+
+<a
+class="big-button"
+href="https://www.google.com/maps/search/?api=1&query=KERVOELEN+SAS"
+target="_blank">
+
+📍 NOUS TROUVER
+
+</a>
+
+
+
+<a
+class="big-button"
+href="https://kervoelen.com/"
+target="_blank">
+
+🌐 KERVOELEN.COM
+
+</a>
+
+
+</div>
 
 </section>
+
 
 
 <!-- ================= NAVIGATION ================= -->
 
 <div class="nav">
 
-  <button
-    id="nav-home"
-    class="active"
-    onclick="showPage('home')">
 
-    <span>⌂</span>
-    ACCUEIL
+<button
+id="nav-home"
+class="active"
+onclick="showPage('home')">
 
-  </button>
+<span>
+⌂
+</span>
 
+ACCUEIL
 
-  <button
-    id="nav-tarifs"
-    onclick="showPage('tarifs')">
-
-    <span>◇</span>
-    TARIFS
-
-  </button>
+</button>
 
 
-  <button
-    id="nav-horaires"
-    onclick="showPage('horaires')">
 
-    <span>◷</span>
-    HORAIRES
+<button
+id="nav-tarifs"
+onclick="showPage('tarifs')">
 
-  </button>
+<span>
+◇
+</span>
+
+TARIFS
+
+</button>
 
 
-  <button
-    id="nav-contact"
-    onclick="showPage('contact')">
 
-    <span>•••</span>
-    CONTACT
+<button
+id="nav-horaires"
+onclick="showPage('horaires')">
 
-  </button>
+<span>
+◷
+</span>
+
+HORAIRES
+
+</button>
+
+
+
+<button
+id="nav-contact"
+onclick="showPage('contact')">
+
+<span>
+•••
+</span>
+
+CONTACT
+
+</button>
+
 
 </div>
 
 </div>
+
+
+
+<!-- ================= GUIDE INSTALLATION ================= -->
+
+<div
+class="modal"
+id="installModal"
+onclick="closeModalBackground(event)">
+
+
+<div class="modal-box">
+
+
+<div class="modal-icon">
+📲
+</div>
+
+
+<h3>
+Installer KERVOELEN
+</h3>
+
+
+<p
+class="modal-intro"
+id="modalIntro">
+
+Ajoutez l'application sur votre écran d'accueil.
+
+</p>
+
+
+<div
+id="installationSteps">
+</div>
+
+
+<button
+class="close-modal"
+onclick="closeInstallGuide()">
+
+FERMER
+
+</button>
+
+
+</div>
+
+</div>
+
 
 
 <script>
+
+
+/* ================= GOOGLE SHEET ================= */
 
 const csvURL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vRHVwxFF8EtnjJ3l22DAsEHPXpF_UmZ13_azpmzSweG2NMwTA8OowKFDqsmHEn5GXMvug7ii0JZCgUv/pub?gid=0&single=true&output=csv";
 
 
-/* ================= LECTURE CSV ================= */
 
 function parseCSV(text){
 
-  const rows=[];
-  let row=[];
-  let value="";
-  let quoted=false;
+const rows=[];
 
-  for(let i=0;i<text.length;i++){
+let row=[];
 
-    const c=text[i];
+let value="";
 
-    if(c==='"'){
+let quoted=false;
 
-      if(quoted && text[i+1]==='"'){
 
-        value+='"';
-        i++;
+for(let i=0;i<text.length;i++){
 
-      }else{
+const c=text[i];
 
-        quoted=!quoted;
 
-      }
+if(c==='"'){
 
-    }
+if(
+quoted &&
+text[i+1]==='"'
+){
 
-    else if(c==="," && !quoted){
+value+='"';
 
-      row.push(value);
-      value="";
+i++;
 
-    }
+}else{
 
-    else if(
-      (c==="\n" || c==="\r")
-      && !quoted
-    ){
+quoted=!quoted;
 
-      if(
-        c==="\r"
-        && text[i+1]==="\n"
-      ){
-        i++;
-      }
-
-      row.push(value);
-
-      if(row.some(v=>v!=="")){
-        rows.push(row);
-      }
-
-      row=[];
-      value="";
-
-    }
-
-    else{
-
-      value+=c;
-
-    }
-
-  }
-
-  if(value || row.length){
-
-    row.push(value);
-    rows.push(row);
-
-  }
-
-  return rows;
 }
+
+}
+
+
+else if(
+c==="," &&
+!quoted
+){
+
+row.push(value);
+
+value="";
+
+}
+
+
+else if(
+(c==="\n" || c==="\r") &&
+!quoted
+){
+
+if(
+c==="\r" &&
+text[i+1]==="\n"
+){
+
+i++;
+
+}
+
+row.push(value);
+
+
+if(
+row.some(v=>v!=="")
+){
+
+rows.push(row);
+
+}
+
+
+row=[];
+
+value="";
+
+}
+
+
+else{
+
+value+=c;
+
+}
+
+}
+
+
+if(
+value ||
+row.length
+){
+
+row.push(value);
+
+rows.push(row);
+
+}
+
+
+return rows;
+
+}
+
 
 
 /* ================= FLÈCHES ================= */
 
 function arrowHTML(evolution){
 
-  if(evolution==="↑"){
+if(evolution==="↑"){
 
-    return '<span class="arrow up">▲</span>';
-
-  }
-
-  if(evolution==="↓"){
-
-    return '<span class="arrow down">▼</span>';
-
-  }
-
-  return '<span class="arrow flat">–</span>';
+return '<span class="arrow up">▲</span>';
 
 }
+
+if(evolution==="↓"){
+
+return '<span class="arrow down">▼</span>';
+
+}
+
+return '<span class="arrow flat">–</span>';
+
+}
+
 
 
 /* ================= CHARGEMENT TARIFS ================= */
 
 async function loadPrices(){
 
-  try{
+try{
 
-    const response=
-      await fetch(
-        csvURL+"&t="+Date.now()
-      );
 
-    const text=
-      await response.text();
+const response =
+await fetch(
+csvURL+"&t="+Date.now()
+);
 
-    const rows=
-      parseCSV(text).slice(1);
 
-    const data=[];
+const text =
+await response.text();
 
 
-    rows.forEach(cols=>{
+const rows =
+parseCSV(text).slice(1);
 
-      const material=
-        (cols[0]||"").trim();
 
-      const price=
-        (cols[1]||"").trim();
+const data=[];
 
-      const unit=
-        (cols[3]||"").trim();
 
-      const evolution=
-        (cols[4]||"").trim();
 
+rows.forEach(cols=>{
 
-      if(!material || !price){
-        return;
-      }
 
+const material =
+(cols[0]||"").trim();
 
-      data.push({
 
-        material,
-        price,
-        unit,
-        evolution
+const price =
+(cols[1]||"").trim();
 
-      });
 
-    });
+const unit =
+(cols[3]||"").trim();
 
 
-    /* ===== TARIFS ACCUEIL ===== */
+const evolution =
+(cols[4]||"").trim();
 
-    const preferred=[
 
-      "Cuivre Millberry",
-      "Laiton",
-      "Alu Mêlé",
-      "Inox"
+if(
+!material ||
+!price
+){
 
-    ];
-
-
-    const preview=
-      preferred
-      .map(
-        name=>
-        data.find(
-          x=>x.material===name
-        )
-      )
-      .filter(Boolean);
-
-
-    let previewHTML="";
-
-
-    preview.forEach(item=>{
-
-      previewHTML+=`
-
-        <div class="price-row">
-
-          <div class="material">
-
-            ${item.material.toUpperCase()}
-
-          </div>
-
-
-          <div class="price">
-
-            ${item.price} ${item.unit}
-
-          </div>
-
-
-          ${arrowHTML(item.evolution)}
-
-        </div>
-
-      `;
-
-    });
-
-
-    document
-      .getElementById("previewPrices")
-      .innerHTML=previewHTML;
-
-
-    /* ===== TOUS LES TARIFS ===== */
-
-    let fullHTML="";
-
-
-    data.forEach(item=>{
-
-      fullHTML+=`
-
-        <div class="full-row">
-
-          <div class="material">
-
-            ${item.material}
-
-          </div>
-
-
-          <div class="price">
-
-            ${item.price} ${item.unit}
-
-          </div>
-
-
-          ${arrowHTML(item.evolution)}
-
-        </div>
-
-      `;
-
-    });
-
-
-    document
-      .getElementById("allPrices")
-      .innerHTML=fullHTML;
-
-
-    /* ===== DATE ACTUALISATION ===== */
-
-    const now=new Date();
-
-
-    const dateText=
-
-      now.toLocaleDateString("fr-FR")
-
-      +" • "+
-
-      now.toLocaleTimeString(
-        "fr-FR",
-        {
-          hour:"2-digit",
-          minute:"2-digit"
-        }
-      );
-
-
-    document
-      .getElementById("updatedHome")
-      .textContent=
-      "Mise à jour "+dateText;
-
-
-    document
-      .getElementById("updatedFull")
-      .textContent=
-      "Dernière actualisation : "+dateText;
-
-  }
-
-  catch(error){
-
-    document
-      .getElementById("updatedHome")
-      .textContent=
-      "Tarifs indisponibles";
-
-    console.error(error);
-
-  }
+return;
 
 }
+
+
+data.push({
+
+material,
+price,
+unit,
+evolution
+
+});
+
+
+});
+
+
+
+/* ===== ACCUEIL ===== */
+
+const preferred=[
+
+"Cuivre Millberry",
+"Laiton",
+"Alu Mêlé",
+"Inox"
+
+];
+
+
+const preview =
+preferred
+.map(
+name =>
+data.find(
+x=>x.material===name
+)
+)
+.filter(Boolean);
+
+
+
+let previewHTML="";
+
+
+preview.forEach(item=>{
+
+
+previewHTML+=`
+
+<div class="price-row">
+
+<div class="material">
+${item.material.toUpperCase()}
+</div>
+
+<div class="price">
+${item.price} ${item.unit}
+</div>
+
+${arrowHTML(item.evolution)}
+
+</div>
+
+`;
+
+});
+
+
+document
+.getElementById("previewPrices")
+.innerHTML =
+previewHTML;
+
+
+
+/* ===== LISTE COMPLÈTE ===== */
+
+let fullHTML="";
+
+
+data.forEach(item=>{
+
+
+fullHTML+=`
+
+<div class="full-row">
+
+<div class="material">
+${item.material}
+</div>
+
+<div class="price">
+${item.price} ${item.unit}
+</div>
+
+${arrowHTML(item.evolution)}
+
+</div>
+
+`;
+
+});
+
+
+document
+.getElementById("allPrices")
+.innerHTML =
+fullHTML;
+
+
+
+/* ===== DATE ===== */
+
+const now =
+new Date();
+
+
+const dateText =
+
+now.toLocaleDateString("fr-FR")
+
++" • "+
+
+now.toLocaleTimeString(
+"fr-FR",
+{
+hour:"2-digit",
+minute:"2-digit"
+}
+);
+
+
+
+document
+.getElementById("updatedHome")
+.textContent =
+"Mise à jour "+dateText;
+
+
+document
+.getElementById("updatedFull")
+.textContent =
+"Dernière actualisation : "+dateText;
+
+
+}
+
+catch(error){
+
+
+document
+.getElementById("updatedHome")
+.textContent =
+"Tarifs indisponibles";
+
+
+console.error(error);
+
+
+}
+
+}
+
 
 
 /* ================= NAVIGATION ================= */
 
 function showPage(page){
 
-  document
-    .querySelectorAll(".page")
-    .forEach(
-      p=>p.classList.remove("active")
-    );
+
+document
+.querySelectorAll(".page")
+.forEach(
+p=>p.classList.remove("active")
+);
 
 
-  document
-    .getElementById(page)
-    .classList.add("active");
+document
+.getElementById(page)
+.classList.add("active");
 
 
-  document
-    .querySelectorAll(".nav button")
-    .forEach(
-      b=>b.classList.remove("active")
-    );
+document
+.querySelectorAll(".nav button")
+.forEach(
+b=>b.classList.remove("active")
+);
 
 
-  const nav=
-    document.getElementById(
-      "nav-"+page
-    );
+const nav =
+document.getElementById(
+"nav-"+page
+);
 
 
-  if(nav){
+if(nav){
 
-    nav.classList.add("active");
-
-  }
-
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+nav.classList.add("active");
 
 }
 
 
-/* PREMIER CHARGEMENT */
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+
+}
+
+
+
+/* ================= INSTALLATION PWA ================= */
+
+let deferredPrompt = null;
+
+
+/* ANDROID / CHROME */
+
+window.addEventListener(
+"beforeinstallprompt",
+(event)=>{
+
+event.preventDefault();
+
+deferredPrompt=event;
+
+}
+);
+
+
+
+/* APP INSTALLÉE */
+
+window.addEventListener(
+"appinstalled",
+()=>{
+
+const area =
+document.getElementById("installArea");
+
+if(area){
+
+area.style.display="none";
+
+}
+
+deferredPrompt=null;
+
+}
+);
+
+
+
+function isStandalone(){
+
+return (
+
+window.matchMedia(
+"(display-mode: standalone)"
+).matches
+
+||
+
+window.navigator.standalone === true
+
+);
+
+}
+
+
+
+function isIOS(){
+
+return /iphone|ipad|ipod/i
+.test(
+navigator.userAgent
+);
+
+}
+
+
+
+function installApp(){
+
+
+/* Déjà installée */
+
+if(isStandalone()){
+
+return;
+
+}
+
+
+/* Installation Android disponible */
+
+if(deferredPrompt){
+
+deferredPrompt.prompt();
+
+
+deferredPrompt
+.userChoice
+.then(()=>{
+
+deferredPrompt=null;
+
+});
+
+
+return;
+
+}
+
+
+/* Sinon guide */
+
+showInstallGuide();
+
+}
+
+
+
+function showInstallGuide(){
+
+
+const modal =
+document.getElementById(
+"installModal"
+);
+
+
+const steps =
+document.getElementById(
+"installationSteps"
+);
+
+
+const intro =
+document.getElementById(
+"modalIntro"
+);
+
+
+
+if(isIOS()){
+
+
+intro.innerHTML =
+"Sur iPhone, l'installation se fait directement depuis <strong>Safari</strong>.";
+
+
+steps.innerHTML = `
+
+<div class="install-step">
+
+<div class="step-number">
+1
+</div>
+
+<div class="step-text">
+Ouvrez cette page dans <strong>Safari</strong>.
+</div>
+
+</div>
+
+
+<div class="install-step">
+
+<div class="step-number">
+2
+</div>
+
+<div class="step-text">
+Touchez le bouton <strong>Partager</strong> ⬆️ en bas de Safari.
+</div>
+
+</div>
+
+
+<div class="install-step">
+
+<div class="step-number">
+3
+</div>
+
+<div class="step-text">
+Choisissez <strong>Sur l'écran d'accueil</strong>.
+</div>
+
+</div>
+
+
+<div class="install-step">
+
+<div class="step-number">
+4
+</div>
+
+<div class="step-text">
+Touchez <strong>Ajouter</strong>. L'icône KERVOELEN apparaîtra avec vos applications.
+</div>
+
+</div>
+
+`;
+
+
+}else{
+
+
+intro.innerHTML =
+"Installez KERVOELEN sur votre téléphone pour y accéder comme à une application.";
+
+
+steps.innerHTML = `
+
+<div class="install-step">
+
+<div class="step-number">
+1
+</div>
+
+<div class="step-text">
+Ouvrez cette page dans <strong>Chrome</strong>.
+</div>
+
+</div>
+
+
+<div class="install-step">
+
+<div class="step-number">
+2
+</div>
+
+<div class="step-text">
+Touchez le menu <strong>⋮</strong>.
+</div>
+
+</div>
+
+
+<div class="install-step">
+
+<div class="step-number">
+3
+</div>
+
+<div class="step-text">
+Choisissez <strong>Installer l'application</strong> ou <strong>Ajouter à l'écran d'accueil</strong>.
+</div>
+
+</div>
+
+
+<div class="install-step">
+
+<div class="step-number">
+4
+</div>
+
+<div class="step-text">
+Validez avec <strong>Installer</strong>.
+</div>
+
+</div>
+
+`;
+
+
+}
+
+
+modal.classList.add("open");
+
+}
+
+
+
+function closeInstallGuide(){
+
+document
+.getElementById(
+"installModal"
+)
+.classList.remove("open");
+
+}
+
+
+
+function closeModalBackground(event){
+
+if(
+event.target.id ===
+"installModal"
+){
+
+closeInstallGuide();
+
+}
+
+}
+
+
+
+/* Masquer bouton quand appli lancée depuis icône */
+
+if(isStandalone()){
+
+const area =
+document.getElementById(
+"installArea"
+);
+
+if(area){
+
+area.style.display="none";
+
+}
+
+}
+
+
+
+/* ================= DÉMARRAGE ================= */
 
 loadPrices();
 
 
-/* ACTUALISATION AUTOMATIQUE
-   TOUTES LES 5 MINUTES */
-
 setInterval(
-  loadPrices,
-  300000
+loadPrices,
+300000
 );
 
+
 </script>
 
-</body>
-</html>
-</script>
 
 </body>
+
 </html>
