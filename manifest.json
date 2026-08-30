@@ -1,0 +1,15 @@
+{
+  "name": "KERVOELEN",
+  "short_name": "KERVOELEN",
+  "start_url": "app.html",
+  "display": "standalone",
+  "background_color": "#090909",
+  "theme_color": "#090909",
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
